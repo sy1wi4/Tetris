@@ -48,8 +48,9 @@ std::ostream &operator<<(std::ostream &stream, const Piece &piece) {
     stream << std::endl;
 }
 
+// TODO
 void Piece::draw(GUI* gui) {
-    SDL_SetRenderDrawColor(gui->getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_SetRenderDrawColor(gui->getRenderer(), 212, 174, 51, 0xFF);
     SDL_Rect rect{ 100, 100, 110, 200};
 
     SDL_RenderFillRect(gui->getRenderer(), &rect);

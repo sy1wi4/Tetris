@@ -5,10 +5,14 @@
 #ifndef TETRIS_GAME_H
 #define TETRIS_GAME_H
 
-
 #include "GUI.h"
 #include "GameBoard.h"
 #include "Pieces.h"
+
+#define SQUARE_SIDE 20
+#define BOARD_WIDTH (COLS * SQUARE_SIDE)
+#define BOARD_HEIGHT (ROWS * SQUARE_SIDE)
+
 
 class Game {
 public:
