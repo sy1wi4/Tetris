@@ -6,6 +6,7 @@
 #include "Piece.h"
 #include "Pieces.h"
 #include "GUI.h"
+#include "Game.h"
 
 int main(){
 //    Piece piece(12,13,17,18);
@@ -14,6 +15,7 @@ int main(){
 //    Pieces pieces;
 //    std::cout << pieces << std::endl;
 
-    GUI* gui = new GUI();
+    Game* game = new Game();
+    game->start();
 
 }

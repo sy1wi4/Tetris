@@ -36,6 +36,9 @@ Pieces::Pieces() {
     // T
     Piece p7(7,12,17,13);
     add(p7);
+
+    srand(time(NULL));
+
 }
 
 void Pieces::add(Piece piece) {
@@ -46,4 +49,8 @@ std::ostream &operator<<(std::ostream &stream, const Pieces &p) {
     for(const auto & piece : p.pieces) {
         stream << piece << std::endl;
     }
+}
+
+Piece& Pieces::get_random_piece() {
+    return pieces[rand() % PIECES_NUMBER];
 }

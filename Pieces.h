@@ -8,13 +8,14 @@
 #include <vector>
 #include "Piece.h"
 
+#define PIECES_NUMBER 7
 
 class Pieces {
 public:
     Pieces();
     void add(Piece piece);
     friend std::ostream& operator<<(std::ostream& stream, const Pieces& pieces);
-
+    Piece& get_random_piece();
 private:
     std::vector<Piece> pieces;
 };

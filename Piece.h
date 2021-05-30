@@ -6,6 +6,7 @@
 #define TETRIS_PIECE_H
 
 #include <ostream>
+#include "GUI.h"
 
 #define BLOCK_SIDE 5
 
@@ -27,8 +28,13 @@
 
 class Piece {
 public:
+    Piece();
     Piece(int sqr1, int sqr2, int sqr3, int sqr4);
+
     friend std::ostream& operator<<(std::ostream& stream, const Piece& piece);
+
+    static void draw(GUI* gui);
+
 //private:
     int block[BLOCK_SIDE][BLOCK_SIDE] = {0};
 };

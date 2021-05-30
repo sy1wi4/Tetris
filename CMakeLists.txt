@@ -15,6 +15,10 @@ add_executable(Tetris
         Piece.h
         GUI.cpp
         GUI.h
+        Game.cpp
+        Game.h
+        GameBoard.cpp
+        GameBoard.h
         )
 
 target_link_libraries(Tetris SDL2)

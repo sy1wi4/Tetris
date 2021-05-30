@@ -24,6 +24,10 @@
  */
 
 
+Piece::Piece() {
+    ;
+}
+
 // every piece consists of 4 squares
 Piece::Piece(int sqr1, int sqr2, int sqr3, int sqr4) {
     // row = sqr/5, col = sqr%5
@@ -43,3 +47,12 @@ std::ostream &operator<<(std::ostream &stream, const Piece &piece) {
     }
     stream << std::endl;
 }
+
+void Piece::draw(GUI* gui) {
+    SDL_SetRenderDrawColor(gui->getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_Rect rect{ 100, 100, 110, 200};
+
+    SDL_RenderFillRect(gui->getRenderer(), &rect);
+    SDL_RenderPresent(gui->getRenderer());
+}
+
