@@ -11,7 +11,6 @@
 
 #define STEP_TIME 700
 
-#define SQUARE_SIDE 20
 #define BOARD_WIDTH (COLS * SQUARE_SIDE)
 #define BOARD_HEIGHT (ROWS * SQUARE_SIDE)
 
@@ -23,6 +22,8 @@ public:
     void start();
     void reset_current_piece_coord();
     void handle_key(SDL_Event event);
+    int get_current_x() const;
+    int get_current_y() const;
 
 private:
     GUI* gui;
@@ -30,18 +31,10 @@ private:
     GameBoard* board;
     Pieces* pieces;
     Piece current_piece;
-public:
-    const Piece &getCurrentPiece() const;
 
-private:
     int current_x;
     int current_y;
     Piece next_piece;
-
-public:
-    int get_current_x() const;
-    int get_current_y() const;
-
 };
 
 

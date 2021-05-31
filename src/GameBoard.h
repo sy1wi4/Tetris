@@ -27,11 +27,16 @@ public:
     void place_piece(Piece piece, int x, int y);  // piece placed; x,y - upper left square
     bool can_move(Piece piece, int x, int y);
     void draw_stored_pieces(GUI* gui);
+    void clear_full_lines(GUI* gui, int y);
+
 private:
     int rows;
     int cols;
     std::vector< std::vector<int>> board_matrix;
     static bool is_inside_board(int x, int y, int block_row, int block_co);
+    bool is_line_full(int y);
+    void clear_line(int y);
+
 };
 
 

@@ -75,7 +75,7 @@ void GameBoard::draw_stored_pieces(GUI *gui) {
     int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2;
     int start_y = gui->getWindowHeight() - BOARD_HEIGHT;
 
-    SDL_SetRenderDrawColor(gui->getRenderer(), 96, 0, 128,0xFF);
+    SDL_SetRenderDrawColor(gui->getRenderer(), 148, 148, 184,0xFF);
 
 
     for (int i = 0; i < ROWS; i++){
@@ -88,6 +88,38 @@ void GameBoard::draw_stored_pieces(GUI *gui) {
         }
     }
 }
+
+bool GameBoard::is_line_full(int y) {
+    for (int i = 0; i < COLS; i++){
+        if (board_matrix[y][i] == EMPTY){
+            return false;
+        }
+    }
+    return true;
+}
+
+// y is top square of last added piece - check only four down squares
+void GameBoard::clear_full_lines(GUI* gui, int y) {
+    for (int row = y; ((row < ROWS) && (row < y + 4)); row++){
+        if (is_line_full(row)) {
+            clear_line(row);
+        }
+    }
+}
+
+// move down the squares above given row
+void GameBoard::clear_line(int y) {
+    for (int row = y; row >= 0; row--){
+        for (int col = 0; col < COLS; col++){
+            if (row == 0) board_matrix[row][col] = EMPTY;
+            else
+                board_matrix[row][col] = board_matrix[row - 1][col];
+        }
+    }
+}
+
+
+
 
 
 

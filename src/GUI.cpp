@@ -44,10 +44,6 @@ void GUI::clear_window() {
     SDL_RenderClear(renderer);
 }
 
-SDL_Window *GUI::getWindow() const {
-    return window;
-}
-
 SDL_Renderer *GUI::getRenderer() const {
     return renderer;
 }
@@ -61,7 +57,7 @@ int GUI::getWindowHeight() const {
 }
 
 void GUI::draw_square(int x, int y, int side) {
-    SDL_Rect rect{x, y, side, side};
+    SDL_Rect rect{x, y, side - GAP, side - GAP};
     SDL_RenderFillRect(renderer, &rect);
 
 }

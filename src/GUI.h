@@ -8,8 +8,9 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 480
+#define WINDOW_WIDTH 600
+#define WINDOW_HEIGHT 700
+#define GAP 2 // pixels between squares
 
 class GUI {
 public:
@@ -17,7 +18,6 @@ public:
     int init();
     void clear_window();
 
-    SDL_Window *getWindow() const;
     SDL_Renderer *getRenderer() const;
     void draw_square(int x, int y, int side);
     void draw_next_piece();
