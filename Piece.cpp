@@ -31,10 +31,10 @@ Piece::Piece() {
 // every piece consists of 4 squares
 Piece::Piece(int sqr1, int sqr2, int sqr3, int sqr4) {
     // row = sqr/5, col = sqr%5
-    block[sqr1 / 5][sqr1 % 5] = 1;
-    block[sqr2 / 5][sqr2 % 5] = 1;
-    block[sqr3 / 5][sqr3 % 5] = 1;
-    block[sqr4 / 5][sqr4 % 5] = 1;
+    block[sqr1 / BLOCK_SIDE][sqr1 % BLOCK_SIDE] = 1;
+    block[sqr2 / BLOCK_SIDE][sqr2 % BLOCK_SIDE] = 1;
+    block[sqr3 / BLOCK_SIDE][sqr3 % BLOCK_SIDE] = 1;
+    block[sqr4 / BLOCK_SIDE][sqr4 % BLOCK_SIDE] = 1;
 }
 
 std::ostream &operator<<(std::ostream &stream, const Piece &piece) {
@@ -48,12 +48,20 @@ std::ostream &operator<<(std::ostream &stream, const Piece &piece) {
     stream << std::endl;
 }
 
-// TODO
-void Piece::draw(GUI* gui) {
+// TODO:
+// (x, y) - upper left corner
+void Piece::draw(GUI* gui, int x, int y) {
     SDL_SetRenderDrawColor(gui->getRenderer(), 212, 174, 51, 0xFF);
-    SDL_Rect rect{ 100, 100, 110, 200};
 
-    SDL_RenderFillRect(gui->getRenderer(), &rect);
-    SDL_RenderPresent(gui->getRenderer());
+    for (auto & i : block){
+        for (int j : i){
+
+            if (j){
+                SDL_Rect rect{ x, 0, SQUARE_SIDE, SQUARE_SIDE};
+                SDL_RenderFillRect(gui->getRenderer(), &rect);
+                SDL_RenderPresent(gui->getRenderer());
+            }
+        }
+    }
 }
 

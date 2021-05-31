@@ -15,7 +15,7 @@ Game::Game() {
     board->print();
     std::cout << "current:" << std::endl << current_piece << std::endl;
     std::cout << "next:" << std::endl << next_piece << std::endl;
-    next_piece.draw(gui);
+    next_piece.draw(gui,10,10);
 }
 
 void Game::start() {

@@ -33,8 +33,6 @@ int GUI::init() {
         fprintf(stderr, "Couldn't create renderer: %s\n", SDL_GetError());
         exit(1);
     }
-
-
 }
 
 void GUI::clear_window() {

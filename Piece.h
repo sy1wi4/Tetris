@@ -7,6 +7,7 @@
 
 #include <ostream>
 #include "GUI.h"
+#include "Game.h"
 
 #define BLOCK_SIDE 5
 
@@ -33,7 +34,7 @@ public:
 
     friend std::ostream& operator<<(std::ostream& stream, const Piece& piece);
 
-    static void draw(GUI* gui);
+    void draw(GUI* gui, int x, int y);
 
 //private:
     int block[BLOCK_SIDE][BLOCK_SIDE] = {0};
