@@ -12,9 +12,6 @@ GameBoard::GameBoard() {
 
 GameBoard::GameBoard(int rows, int cols) : rows(rows), cols(cols) {}
 
-void GameBoard::handle_key(SDL_Event event) {
-
-}
 
 void GameBoard::init() {
     board_matrix.resize(rows, std::vector<int>(cols));
@@ -39,4 +36,29 @@ void GameBoard::print() {
     }
     std::cout << std::endl;
 }
+
+// check if given square of piece (coord: block_row, block_col) is inside game board
+bool GameBoard::is_inside_board(int x, int y, int block_row, int block_col) {
+    return (x + block_col >= 0 &&
+            x + block_col < SQUARE_SIDE &&
+            y + block_row >= 0 &&
+            y + block_row < SQUARE_SIDE
+    );
+}
+
+bool GameBoard::can_move(Piece piece, int x, int y) {
+    for (int i = 0; i < BLOCK_SIDE; i++){
+        for(int j = 0; j < BLOCK_SIDE; j++){
+//            std::cout << i << " " << j << std::endl;
+            if (piece(i,j)){
+                if (!is_inside_board(x, y, i, j) || (board_matrix[x + j][y + i] == TAKEN)) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+
 

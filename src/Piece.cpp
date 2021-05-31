@@ -50,6 +50,15 @@ std::ostream &operator<<(std::ostream &stream, const Piece &piece) {
 }
 
 
+const int &Piece::operator()(int x, int y) const {
+    return block[x][y];
+}
+
+int &Piece::operator()(int x, int y) {
+    return block[x][y];
+}
+
+
 void Piece::draw(GUI* gui, int x, int y) {
 
     int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2;

@@ -9,6 +9,7 @@
 #include "GUI.h"
 #include "Piece.h"
 
+
 #define EMPTY 0
 #define TAKEN 1
 
@@ -23,12 +24,13 @@ public:
     void print();
 
     void init();
-    void handle_key(SDL_Event event);
     void place_piece(Piece piece, int x, int y);  // piece placed; x,y - ll square
+    bool can_move(Piece piece, int x, int y);
 private:
     int rows;
     int cols;
     std::vector< std::vector<int>> board_matrix;
+    static bool is_inside_board(int x, int y, int block_row, int block_co);
 };
 
 

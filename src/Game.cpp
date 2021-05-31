@@ -10,8 +10,10 @@ Game::Game() {
     gui = new GUI();
     board = new GameBoard;
     pieces = new Pieces();
+
     current_piece = pieces->get_random_piece();
     reset_current_piece_coord();
+
     next_piece = pieces->get_random_piece();
 
     board->print();
@@ -22,6 +24,32 @@ Game::Game() {
 
     current_piece.draw(gui, get_current_x(), get_current_y());
 }
+
+void Game::handle_key(SDL_Event e) {
+
+    switch(e.key.keysym.sym){
+        case SDLK_LEFT:
+            std::cout << "move LEFT" << std::endl;
+            if (board->can_move(current_piece, current_x, current_y)){
+                std::cout << "OK" << std::endl;
+            }
+            else{
+                std::cout << "NO!" << std::endl << std::endl;
+
+            }
+            break;
+        case SDLK_RIGHT:
+            std::cout << "move RIGHT" << std::endl;
+            break;
+        case SDLK_DOWN:
+            std::cout << "move DOWN" << std::endl;
+            break;
+        case SDLK_UP:
+            std::cout << "ROTATE" << std::endl;
+            break;
+    }
+}
+
 
 void Game::start() {
     bool quit = false;
@@ -35,8 +63,8 @@ void Game::start() {
             if (event.type == SDL_QUIT){
                 quit = true;
             }
-            else{
-                board->handle_key(event);
+            else if (event.type == SDL_KEYDOWN){
+                handle_key(event);
             }
         }
 
@@ -60,4 +88,8 @@ int Game::get_current_x() const {
 
 int Game::get_current_y() const {
     return current_y;
+}
+
+const Piece &Game::getCurrentPiece() const {
+    return current_piece;
 }

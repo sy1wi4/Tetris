@@ -19,6 +19,7 @@ public:
     Game();
     void start();
     void reset_current_piece_coord();
+    void handle_key(SDL_Event event);
 
 private:
     GUI* gui;
@@ -26,6 +27,10 @@ private:
     GameBoard* board;
     Pieces* pieces;
     Piece current_piece;
+public:
+    const Piece &getCurrentPiece() const;
+
+private:
     int current_x;
     int current_y;
     Piece next_piece;
