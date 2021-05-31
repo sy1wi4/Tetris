@@ -8,17 +8,17 @@ link_directories(${PROJECT_SOURCE_DIR}/lib)
 #include_directories(.)
 
 add_executable(Tetris
-        main.cpp
-        Pieces.cpp
-        Pieces.h
-        Piece.cpp
-        Piece.h
-        GUI.cpp
-        GUI.h
-        Game.cpp
-        Game.h
-        GameBoard.cpp
-        GameBoard.h
+        src/main.cpp
+        src/Pieces.cpp
+        src/Pieces.h
+        src/Piece.cpp
+        src/Piece.h
+        src/GUI.cpp
+        src/GUI.h
+        src/Game.cpp
+        src/Game.h
+        src/GameBoard.cpp
+        src/GameBoard.h
         )
 
 target_link_libraries(Tetris SDL2)
