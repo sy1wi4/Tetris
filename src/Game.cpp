@@ -6,6 +6,8 @@
 #include "Game.h"
 #include "GUI.h"
 
+#define STEP_TIME 1000
+
 Game::Game() {
     gui = new GUI();
     board = new GameBoard;
@@ -30,20 +32,31 @@ void Game::handle_key(SDL_Event e) {
     switch(e.key.keysym.sym){
         case SDLK_LEFT:
             std::cout << "move LEFT" << std::endl;
-            if (board->can_move(current_piece, current_x, current_y)){
+            if (board->can_move(current_piece, current_x - 1, current_y)){
                 std::cout << "OK" << std::endl;
+                current_x -= 1;
             }
-            else{
-                std::cout << "NO!" << std::endl << std::endl;
-
-            }
+            else std::cout << "NO!" << std::endl << std::endl;
             break;
+
         case SDLK_RIGHT:
             std::cout << "move RIGHT" << std::endl;
+            if (board->can_move(current_piece, current_x + 1, current_y)){
+                std::cout << "OK" << std::endl;
+                current_x += 1;
+            }
+            else std::cout << "NO!" << std::endl << std::endl;
             break;
+
         case SDLK_DOWN:
             std::cout << "move DOWN" << std::endl;
+            if (board->can_move(current_piece, current_x, current_y + 1)){
+                std::cout << "OK" << std::endl;
+                current_y += 1;
+            }
+            else std::cout << "NO!" << std::endl << std::endl;
             break;
+
         case SDLK_UP:
             std::cout << "ROTATE" << std::endl;
             break;
@@ -53,6 +66,9 @@ void Game::handle_key(SDL_Event e) {
 
 void Game::start() {
     bool quit = false;
+
+    unsigned int start_time, end_time;
+    start_time = SDL_GetTicks();
 
     while(!quit){
         // clear
@@ -68,7 +84,21 @@ void Game::start() {
             }
         }
 
-        // draw game
+        end_time = SDL_GetTicks();
+
+        if (end_time - start_time > STEP_TIME){
+            // move down if possible
+            std::cout << "* NEXT STEP *" << std::endl;
+            if (board->can_move(current_piece, current_x, current_y + 1)){
+                std::cout << "OK" << std::endl;
+                current_y += 1;
+            }
+            else {
+                std::cout << "NO!" << std::endl << std::endl;
+                // TODO: place piece, find full lines, check game over, get next piece
+            }
+            start_time = SDL_GetTicks();
+        }
 
         sleep(1);
 
