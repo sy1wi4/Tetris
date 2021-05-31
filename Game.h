@@ -18,13 +18,22 @@ class Game {
 public:
     Game();
     void start();
+    void reset_current_piece_coord();
+
 private:
     GUI* gui;
     SDL_Event event;
     GameBoard* board;
     Pieces* pieces;
     Piece current_piece;
+    int current_x;
+    int current_y;
     Piece next_piece;
+
+public:
+    int get_current_x() const;
+    int get_current_y() const;
+
 };
 
 

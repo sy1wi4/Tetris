@@ -8,6 +8,9 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
+#define WINDOW_WIDTH 640
+#define WINDOW_HEIGHT 480
+
 class GUI {
 public:
     GUI();
@@ -16,10 +19,19 @@ public:
 
     SDL_Window *getWindow() const;
     SDL_Renderer *getRenderer() const;
+    void draw_square(int x, int y, int side);
 
 private:
     SDL_Window* window;
     SDL_Renderer* renderer;
+    int window_width;
+public:
+    int getWindowWidth() const;
+
+    int getWindowHeight() const;
+
+private:
+    int window_height;
 
 };
 

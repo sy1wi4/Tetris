@@ -2,6 +2,7 @@
 // Created by sylwia on 5/29/21.
 //
 
+#include <unistd.h>
 #include "Piece.h"
 
 /*
@@ -48,18 +49,37 @@ std::ostream &operator<<(std::ostream &stream, const Piece &piece) {
     stream << std::endl;
 }
 
-// TODO:
-// (x, y) - upper left corner
+
 void Piece::draw(GUI* gui, int x, int y) {
-    SDL_SetRenderDrawColor(gui->getRenderer(), 212, 174, 51, 0xFF);
 
-    for (auto & i : block){
+    std::cout << "RYSUJ TO" << std::endl;
+    for (const auto & i : this->block){
         for (int j : i){
+            if (j) std::cout << "1 ";
+            else std::cout << "* ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 
-            if (j){
-                SDL_Rect rect{ x, 0, SQUARE_SIDE, SQUARE_SIDE};
-                SDL_RenderFillRect(gui->getRenderer(), &rect);
-                SDL_RenderPresent(gui->getRenderer());
+    int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2;
+    int start_y = gui->getWindowHeight() - BOARD_HEIGHT;
+    std::cout << "start_x " << start_x << std::endl;
+    std::cout << "start_y " << start_y << std::endl;
+
+    for (int i = 0; i < BLOCK_SIDE; i++){
+        for (int j = 0; j < BLOCK_SIDE; j++){
+
+            if (block[i][j]){
+//                SDL_Rect rect{ x, y, SQUARE_SIDE, SQUARE_SIDE};
+                std::cout << i << j << std::endl;
+                std::cout << "x " << start_x + ((x + j) * SQUARE_SIDE) << std::endl;
+                std::cout << "y " << start_y + ((y + i) * SQUARE_SIDE) << std::endl;
+
+                gui->draw_square(start_x + ((x + j) * SQUARE_SIDE),
+                                 start_y + ((y + i) * SQUARE_SIDE),
+                                 SQUARE_SIDE);
+
             }
         }
     }

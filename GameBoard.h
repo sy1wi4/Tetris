@@ -9,9 +9,6 @@
 #include "GUI.h"
 #include "Piece.h"
 
-#define ROWS 10
-#define COLS 20
-
 #define EMPTY 0
 #define TAKEN 1
 

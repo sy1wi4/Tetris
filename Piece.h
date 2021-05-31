@@ -7,9 +7,13 @@
 
 #include <ostream>
 #include "GUI.h"
-#include "Game.h"
 
 #define BLOCK_SIDE 5
+#define SQUARE_SIDE 20
+#define BOARD_WIDTH (COLS * SQUARE_SIDE)
+#define BOARD_HEIGHT (ROWS * SQUARE_SIDE)
+#define ROWS 15
+#define COLS 10
 
 /*
  Piece block format:
