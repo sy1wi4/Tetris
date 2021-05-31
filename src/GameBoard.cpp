@@ -24,7 +24,13 @@ void GameBoard::init() {
 }
 
 void GameBoard::place_piece(Piece piece, int x, int y) {
-
+    for (int i = 0; i < BLOCK_SIDE; i++){
+        for (int j = 0; j < BLOCK_SIDE; j++){
+            if (piece(i,j)) {
+                board_matrix[i + y][j + x] = TAKEN;
+            }
+        }
+    }
 }
 
 void GameBoard::print() {
@@ -40,24 +46,47 @@ void GameBoard::print() {
 // check if given square of piece (coord: block_row, block_col) is inside game board
 bool GameBoard::is_inside_board(int x, int y, int block_row, int block_col) {
     return (x + block_col >= 0 &&
-            x + block_col < SQUARE_SIDE &&
+            x + block_col < COLS &&
             y + block_row >= 0 &&
-            y + block_row < SQUARE_SIDE
+            y + block_row < ROWS
     );
 }
 
 bool GameBoard::can_move(Piece piece, int x, int y) {
     for (int i = 0; i < BLOCK_SIDE; i++){
         for(int j = 0; j < BLOCK_SIDE; j++){
-//            std::cout << i << " " << j << std::endl;
             if (piece(i,j)){
-                if (!is_inside_board(x, y, i, j) || (board_matrix[x + j][y + i] == TAKEN)) {
+                if (!is_inside_board(x, y, i, j)) {
+                    std::cout << "OUTSIDE BOARD,  x: " << x + j << " y: " << y + i << std::endl;
+                    return false;
+                }
+                if (board_matrix[y + i][x + j] == TAKEN){
+                    std::cout << "TAKEN,  x: " << x + j << " y: " << y + i << std::endl;
                     return false;
                 }
             }
         }
     }
     return true;
+}
+
+void GameBoard::draw_stored_pieces(GUI *gui) {
+    // upper left corner of board
+    int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2;
+    int start_y = gui->getWindowHeight() - BOARD_HEIGHT;
+
+    SDL_SetRenderDrawColor(gui->getRenderer(), 96, 0, 128,0xFF);
+
+
+    for (int i = 0; i < ROWS; i++){
+        for (int j = 0; j < COLS; j++){
+            if (board_matrix[i][j]){
+                gui->draw_square(start_x + (j * SQUARE_SIDE),
+                                 start_y + (i * SQUARE_SIDE),
+                                 SQUARE_SIDE);
+            }
+        }
+    }
 }
 
 

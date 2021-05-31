@@ -9,9 +9,12 @@
 #include "GameBoard.h"
 #include "Pieces.h"
 
+#define STEP_TIME 700
+
 #define SQUARE_SIDE 20
 #define BOARD_WIDTH (COLS * SQUARE_SIDE)
 #define BOARD_HEIGHT (ROWS * SQUARE_SIDE)
+
 
 
 class Game {

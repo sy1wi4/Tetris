@@ -24,8 +24,9 @@ public:
     void print();
 
     void init();
-    void place_piece(Piece piece, int x, int y);  // piece placed; x,y - ll square
+    void place_piece(Piece piece, int x, int y);  // piece placed; x,y - upper left square
     bool can_move(Piece piece, int x, int y);
+    void draw_stored_pieces(GUI* gui);
 private:
     int rows;
     int cols;
