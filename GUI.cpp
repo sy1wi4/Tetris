@@ -64,6 +64,14 @@ void GUI::draw_square(int x, int y, int side) {
     SDL_SetRenderDrawColor(renderer, 212, 174, 51, 0xFF);
     SDL_Rect rect{x, y, side, side};
     SDL_RenderFillRect(renderer, &rect);
-    SDL_RenderPresent(renderer);
-    usleep(10000);
+//    SDL_RenderPresent(renderer);
+//    usleep(10000);
+}
+
+void GUI::draw_stored_pieces() {
+
+}
+
+void GUI::draw_next_piece() {
+
 }

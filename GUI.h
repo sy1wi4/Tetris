@@ -20,7 +20,8 @@ public:
     SDL_Window *getWindow() const;
     SDL_Renderer *getRenderer() const;
     void draw_square(int x, int y, int side);
-
+    void draw_stored_pieces();
+    void draw_next_piece();
 private:
     SDL_Window* window;
     SDL_Renderer* renderer;

@@ -35,6 +35,9 @@ void Game::start() {
             if (event.type == SDL_QUIT){
                 quit = true;
             }
+            else{
+                board->handle_key(event);
+            }
         }
 
         // draw game

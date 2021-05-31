@@ -52,29 +52,20 @@ std::ostream &operator<<(std::ostream &stream, const Piece &piece) {
 
 void Piece::draw(GUI* gui, int x, int y) {
 
-    std::cout << "RYSUJ TO" << std::endl;
-    for (const auto & i : this->block){
-        for (int j : i){
-            if (j) std::cout << "1 ";
-            else std::cout << "* ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
-
     int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2;
     int start_y = gui->getWindowHeight() - BOARD_HEIGHT;
     std::cout << "start_x " << start_x << std::endl;
     std::cout << "start_y " << start_y << std::endl;
 
+    SDL_RenderClear(gui->getRenderer());
+
     for (int i = 0; i < BLOCK_SIDE; i++){
         for (int j = 0; j < BLOCK_SIDE; j++){
 
             if (block[i][j]){
-//                SDL_Rect rect{ x, y, SQUARE_SIDE, SQUARE_SIDE};
-                std::cout << i << j << std::endl;
-                std::cout << "x " << start_x + ((x + j) * SQUARE_SIDE) << std::endl;
-                std::cout << "y " << start_y + ((y + i) * SQUARE_SIDE) << std::endl;
+//                std::cout << i << j << std::endl;
+//                std::cout << "x " << start_x + ((x + j) * SQUARE_SIDE) << std::endl;
+//                std::cout << "y " << start_y + ((y + i) * SQUARE_SIDE) << std::endl;
 
                 gui->draw_square(start_x + ((x + j) * SQUARE_SIDE),
                                  start_y + ((y + i) * SQUARE_SIDE),
@@ -83,5 +74,7 @@ void Piece::draw(GUI* gui, int x, int y) {
             }
         }
     }
+    SDL_RenderPresent(gui->getRenderer());
+
 }
 
