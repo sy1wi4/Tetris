@@ -42,6 +42,7 @@ public:
     const int& operator()(int x, int y) const;
     int& operator()(int x, int y);
 
+    void rotate();
     void draw(GUI* gui, int x, int y);
 
 private:

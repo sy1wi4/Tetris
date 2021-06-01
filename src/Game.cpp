@@ -40,6 +40,9 @@ void Game::handle_key(SDL_Event e) {
 
         case SDLK_UP:
             std::cout << "ROTATE" << std::endl;
+            if (can_rotate()){
+                current_piece.rotate();
+            }
             break;
     }
 }
@@ -56,7 +59,7 @@ void Game::start() {
         gui->clear_window();
 
         // draw board borders
-        board->draw_borders(gui);
+        GameBoard::draw_borders(gui);
 
         //draw board
         board->draw_stored_pieces(gui);
@@ -111,4 +114,12 @@ int Game::get_current_x() const {
 
 int Game::get_current_y() const {
     return current_y;
+}
+
+bool Game::can_rotate() {
+    Piece temp_piece;
+    temp_piece = current_piece;
+    temp_piece.rotate();
+
+    return board->can_move(temp_piece, current_x, current_y);
 }

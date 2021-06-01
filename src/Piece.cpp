@@ -80,3 +80,19 @@ void Piece::draw(GUI* gui, int x, int y) {
 
 }
 
+void Piece::rotate() {
+    int rotated[BLOCK_SIDE][BLOCK_SIDE] = {0};
+
+    for(int i = 0; i < BLOCK_SIDE; i++){
+        for (int j = 0; j < BLOCK_SIDE; j++){
+            rotated[i][j] = block[BLOCK_SIDE - j - 1][i];
+        }
+    }
+
+    for(int i = 0; i < BLOCK_SIDE; i++){
+        for (int j = 0; j < BLOCK_SIDE; j++){
+            block[i][j] = rotated[i][j];
+        }
+    }
+}
+

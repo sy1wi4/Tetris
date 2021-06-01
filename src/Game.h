@@ -35,6 +35,8 @@ private:
     int current_x;
     int current_y;
     Piece next_piece;
+
+    bool can_rotate();
 };
 
 
