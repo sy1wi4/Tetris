@@ -29,6 +29,7 @@ public:
     void draw_stored_pieces(GUI* gui);
     static void draw_borders(GUI* gui);
     void clear_full_lines(GUI* gui, int y);
+    bool check_game_over();
 
 private:
     int rows;

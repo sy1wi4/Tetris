@@ -19,6 +19,7 @@
 class Game {
 public:
     Game();
+    void init();
     void start();
     void reset_current_piece_coord();
     void handle_key(SDL_Event event);

@@ -10,7 +10,7 @@ int main(){
     Game* game = new Game();
     game->start();
 
-    // TODO: draw next piece, highlight next piece, initial position of piece,
-    //       rotate pieces, check game over, fix removing lines (?)
+    // TODO: draw next piece, highlight next piece,
+    //  initial position of piece, reset game after game over
 
 }

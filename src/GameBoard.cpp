@@ -149,8 +149,13 @@ void GameBoard::clear_line(int y) {
     }
 }
 
-
-
-
+bool GameBoard::check_game_over() {
+    for (int i = 0; i < COLS; i++) {
+        if (board_matrix[1][i] == TAKEN){
+            return true;
+        }
+    }
+    return false;
+}
 
 

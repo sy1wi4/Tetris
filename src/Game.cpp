@@ -7,6 +7,10 @@
 #include "GUI.h"
 
 Game::Game() {
+    init();
+}
+
+void Game::init() {
     gui = new GUI();
     board = new GameBoard;
     pieces = new Pieces();
@@ -88,9 +92,19 @@ void Game::start() {
                 board->place_piece(current_piece, current_x, current_y);
                 board->clear_full_lines(gui, current_y);
 
-                current_piece = next_piece;
-                next_piece = pieces->get_random_piece();
-                reset_current_piece_coord();
+
+
+                if (board->check_game_over()){
+                    std::cout << "GAME OVER!" << std::endl;
+                    sleep(1);
+                    quit = true;
+                }
+
+                else {
+                    current_piece = next_piece;
+                    next_piece = pieces->get_random_piece();
+                    reset_current_piece_coord();
+                }
             }
             start_time = SDL_GetTicks();
         }
@@ -121,3 +135,4 @@ bool Game::can_rotate() {
 
     return board->can_move(temp_piece, current_x, current_y);
 }
+
