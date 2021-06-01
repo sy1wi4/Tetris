@@ -67,6 +67,9 @@ void Game::start() {
         //draw board
         board->draw_stored_pieces(gui);
 
+        // draw next
+        draw_next_piece();
+
         // move
         while(SDL_PollEvent(&event)){
             if (event.type == SDL_QUIT){
@@ -134,5 +137,23 @@ bool Game::can_rotate() {
     temp_piece.rotate();
 
     return board->can_move(temp_piece, current_x, current_y);
+}
+
+void Game::draw_next_piece() {
+    int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 8;
+    int start_y = gui->getWindowHeight() - BOARD_HEIGHT - SQUARE_SIDE;
+
+    SDL_SetRenderDrawColor(gui->getRenderer(), 133, 224, 133, 0xFF);
+
+    for (int i = 0; i < BLOCK_SIDE; i++){
+        for (int j = 0; j < BLOCK_SIDE; j++){
+
+            if (next_piece(i,j)){
+                gui->draw_square(start_x + j * SQUARE_SIDE,
+                                 start_y + i * SQUARE_SIDE,
+                                 SQUARE_SIDE);
+            }
+        }
+    }
 }
 

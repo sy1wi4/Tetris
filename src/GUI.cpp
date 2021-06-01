@@ -62,7 +62,6 @@ void GUI::draw_square(int x, int y, int side) {
 
 }
 
-
-void GUI::draw_next_piece() {
+void GUI::draw_title() {
 
 }

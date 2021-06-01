@@ -25,6 +25,7 @@ public:
     void handle_key(SDL_Event event);
     int get_current_x() const;
     int get_current_y() const;
+    void draw_next_piece();
 
 private:
     GUI* gui;
