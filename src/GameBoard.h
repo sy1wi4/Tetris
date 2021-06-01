@@ -27,6 +27,7 @@ public:
     void place_piece(Piece piece, int x, int y);  // piece placed; x,y - upper left square
     bool can_move(Piece piece, int x, int y);
     void draw_stored_pieces(GUI* gui);
+    static void draw_borders(GUI* gui);
     void clear_full_lines(GUI* gui, int y);
 
 private:

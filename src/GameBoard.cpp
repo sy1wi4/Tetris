@@ -73,7 +73,7 @@ bool GameBoard::can_move(Piece piece, int x, int y) {
 void GameBoard::draw_stored_pieces(GUI *gui) {
     // upper left corner of board
     int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2;
-    int start_y = gui->getWindowHeight() - BOARD_HEIGHT;
+    int start_y = gui->getWindowHeight() - BOARD_HEIGHT - SQUARE_SIDE;
 
     SDL_SetRenderDrawColor(gui->getRenderer(), 148, 148, 184,0xFF);
 
@@ -86,6 +86,38 @@ void GameBoard::draw_stored_pieces(GUI *gui) {
                                  SQUARE_SIDE);
             }
         }
+    }
+}
+
+void GameBoard::draw_borders(GUI* gui) {
+    int left_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2;
+    int right_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2 + BOARD_WIDTH;
+    int start_y = gui->getWindowHeight() - BOARD_HEIGHT - SQUARE_SIDE;
+
+    SDL_SetRenderDrawColor(gui->getRenderer(), 104, 100, 118, 0xFF);
+
+    for (int i = 0; i < ROWS; i++) {
+        // left
+        gui->draw_square(left_x - SQUARE_SIDE,
+                         start_y + (i * SQUARE_SIDE),
+                         SQUARE_SIDE);
+
+        // right
+        gui->draw_square(right_x,
+                         start_y + (i * SQUARE_SIDE),
+                         SQUARE_SIDE);
+    }
+
+    for (int i = 0; i < COLS + 2; i++) {
+        // top
+        gui->draw_square(left_x + (i - 1) * SQUARE_SIDE,
+                         start_y - SQUARE_SIDE,
+                         SQUARE_SIDE);
+
+        // bottom
+        gui->draw_square(left_x + (i - 1) * SQUARE_SIDE,
+                         start_y + ROWS * SQUARE_SIDE,
+                         SQUARE_SIDE);
     }
 }
 

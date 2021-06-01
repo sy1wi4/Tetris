@@ -55,6 +55,9 @@ void Game::start() {
         // clear
         gui->clear_window();
 
+        // draw board borders
+        board->draw_borders(gui);
+
         //draw board
         board->draw_stored_pieces(gui);
 

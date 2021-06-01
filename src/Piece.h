@@ -13,6 +13,7 @@
 #define SQUARE_SIDE 27
 #define BOARD_WIDTH (COLS * SQUARE_SIDE)
 #define BOARD_HEIGHT (ROWS * SQUARE_SIDE)
+#define BORDER_WIDTH 10
 #define ROWS 20
 #define COLS 10
 

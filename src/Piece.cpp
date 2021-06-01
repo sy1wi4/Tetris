@@ -63,7 +63,7 @@ void Piece::draw(GUI* gui, int x, int y) {
 
     // upper left corner of board
     int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2;
-    int start_y = gui->getWindowHeight() - BOARD_HEIGHT;
+    int start_y = gui->getWindowHeight() - BOARD_HEIGHT - SQUARE_SIDE;
 
     SDL_SetRenderDrawColor(gui->getRenderer(), 212, 174, 51, 0xFF);
 
