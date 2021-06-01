@@ -57,11 +57,9 @@ bool GameBoard::can_move(Piece piece, int x, int y) {
         for(int j = 0; j < BLOCK_SIDE; j++){
             if (piece(i,j)){
                 if (!is_inside_board(x, y, i, j)) {
-                    std::cout << "OUTSIDE BOARD,  x: " << x + j << " y: " << y + i << std::endl;
                     return false;
                 }
                 if (board_matrix[y + i][x + j] == TAKEN){
-                    std::cout << "TAKEN,  x: " << x + j << " y: " << y + i << std::endl;
                     return false;
                 }
             }
@@ -132,7 +130,8 @@ bool GameBoard::is_line_full(int y) {
 
 // y is top square of last added piece - check only four down squares
 void GameBoard::clear_full_lines(GUI* gui, int y) {
-    for (int row = y; ((row < ROWS) && (row < y + 4)); row++){
+
+    for (int row = y; ((row < ROWS) && (row < y + 5)); row++){
         if (is_line_full(row)) {
             clear_line(row);
         }

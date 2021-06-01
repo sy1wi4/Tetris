@@ -39,7 +39,6 @@ void Game::handle_key(SDL_Event e) {
             break;
 
         case SDLK_UP:
-            std::cout << "ROTATE" << std::endl;
             if (can_rotate()){
                 current_piece.rotate();
             }
@@ -87,7 +86,6 @@ void Game::start() {
             else {
                 // TODO: check game over
                 board->place_piece(current_piece, current_x, current_y);
-
                 board->clear_full_lines(gui, current_y);
 
                 current_piece = next_piece;
