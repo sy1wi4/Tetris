@@ -6,7 +6,7 @@ as possible.
 
 // gif
 
-### Controls
+## Controls
 :arrow_left:
 move piece left
 
@@ -22,12 +22,12 @@ rotate piece
 :negative_squared_cross_mark:
 Close game
 
-### Game
+## Game
 Next piece is marked in green in the upper left corner.
 
-// pic
+<img src="https://github.com/sy1wi4/Tetris/blob/master/utils/next_piece.png" width="450" hspace="30"/>
 
-### Future task list
+## Future task list
 - [ ] Scoring
 - [ ] Music
 - [ ] Levels with increasing speed
