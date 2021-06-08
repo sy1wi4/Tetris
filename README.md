@@ -4,7 +4,7 @@ Basic remake of Tetris game using ```SDL2``` library.
 Objective is to place pieces on the board (by moving and rotating) to create as many full horizontal lines of blocks 
 as possible.
 
-// gif
+![](https://github.com/sy1wi4/Tetris/blob/master/utils/game.gif)
 
 ## Controls
 :arrow_left:
