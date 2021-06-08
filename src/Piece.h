@@ -9,12 +9,13 @@
 #include <vector>
 #include "GUI.h"
 
-#define BLOCK_SIDE 5
-#define SQUARE_SIDE 27
-#define BOARD_WIDTH (COLS * SQUARE_SIDE)
-#define BOARD_HEIGHT (ROWS * SQUARE_SIDE)
-#define ROWS 20
-#define COLS 10
+constexpr int block_side = 5;
+constexpr int square_side = 27;
+constexpr int rows_number = 20;
+constexpr int cols_number = 10;
+constexpr int board_width = cols_number * square_side;
+constexpr int board_height = rows_number * square_side;
+
 
 /*
  Piece block format:
@@ -45,7 +46,7 @@ public:
     void draw(GUI* gui, int x, int y);
 
 private:
-    int block[BLOCK_SIDE][BLOCK_SIDE] = {0};
+    int block[block_side][block_side] = {0};
 };
 
 

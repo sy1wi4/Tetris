@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "GUI.h"
 
+
 Game::Game() {
     init();
 }
@@ -85,17 +86,14 @@ void Game::start() {
 
         end_time = SDL_GetTicks();
 
-        if (end_time - start_time > STEP_TIME){
+        if (end_time - start_time > step_time){
             // move down if possible
             if (board->can_move(current_piece, current_x, current_y + 1)){
                 current_y += 1;
             }
             else {
-                // TODO: check game over
                 board->place_piece(current_piece, current_x, current_y);
                 board->clear_full_lines(gui, current_y);
-
-
 
                 if (board->check_game_over()){
                     std::cout << "GAME OVER!" << std::endl;
@@ -119,7 +117,7 @@ void Game::start() {
 
 void Game::reset_current_piece_coord() {
     // initial position of block
-    current_x = COLS/2 - BLOCK_SIDE/2;
+    current_x = cols_number / 2 - block_side / 2;
     current_y = 0;
 }
 
@@ -140,18 +138,18 @@ bool Game::can_rotate() {
 }
 
 void Game::draw_next_piece() {
-    int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 8;
-    int start_y = gui->getWindowHeight() - BOARD_HEIGHT - SQUARE_SIDE;
+    int start_x = (gui->getWindowWidth() - board_width) / 8;
+    int start_y = gui->getWindowHeight() - board_height - square_side;
 
     SDL_SetRenderDrawColor(gui->getRenderer(), 133, 224, 133, 0xFF);
 
-    for (int i = 0; i < BLOCK_SIDE; i++){
-        for (int j = 0; j < BLOCK_SIDE; j++){
+    for (int i = 0; i < block_side; i++){
+        for (int j = 0; j < block_side; j++){
 
             if (next_piece(i,j)){
-                gui->draw_square(start_x + j * SQUARE_SIDE,
-                                 start_y + i * SQUARE_SIDE,
-                                 SQUARE_SIDE);
+                gui->draw_square(start_x + j * square_side,
+                                 start_y + i * square_side,
+                                 square_side);
             }
         }
     }

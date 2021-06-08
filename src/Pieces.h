@@ -8,7 +8,7 @@
 #include <vector>
 #include "Piece.h"
 
-#define PIECES_NUMBER 7
+constexpr int pieces_number = 7;
 
 class Pieces {
 public:

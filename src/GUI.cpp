@@ -7,8 +7,8 @@
 
 
 GUI::GUI() {
-    window_width = WINDOW_WIDTH;
-    window_height = WINDOW_HEIGHT;
+    window_width = win_width;
+    window_height = win_height;
     init();
 }
 
@@ -23,7 +23,7 @@ int GUI::init() {
     atexit(SDL_Quit);
 
     // create window
-    window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Tetris", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, win_width, win_height, SDL_WINDOW_SHOWN);
 
     if (!window){
         fprintf(stderr, "Couldn't set 640x480x8 window: %s\n", SDL_GetError());
@@ -57,11 +57,7 @@ int GUI::getWindowHeight() const {
 }
 
 void GUI::draw_square(int x, int y, int side) {
-    SDL_Rect rect{x, y, side - GAP, side - GAP};
+    SDL_Rect rect{x, y, side - gap, side - gap};
     SDL_RenderFillRect(renderer, &rect);
-
-}
-
-void GUI::draw_title() {
 
 }

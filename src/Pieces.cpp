@@ -52,5 +52,5 @@ std::ostream &operator<<(std::ostream &stream, const Pieces &p) {
 }
 
 Piece& Pieces::get_random_piece() {
-    return pieces[rand() % PIECES_NUMBER];
+    return pieces[rand() % pieces_number];
 }

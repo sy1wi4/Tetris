@@ -9,10 +9,7 @@
 #include "GameBoard.h"
 #include "Pieces.h"
 
-#define STEP_TIME 700
-
-#define BOARD_WIDTH (COLS * SQUARE_SIDE)
-#define BOARD_HEIGHT (ROWS * SQUARE_SIDE)
+constexpr int step_time = 700;
 
 
 
@@ -29,14 +26,13 @@ public:
 
 private:
     GUI* gui;
-    SDL_Event event;
     GameBoard* board;
     Pieces* pieces;
     Piece current_piece;
-
+    Piece next_piece;
+    SDL_Event event;
     int current_x;
     int current_y;
-    Piece next_piece;
 
     bool can_rotate();
 };

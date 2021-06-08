@@ -2,19 +2,10 @@
 // Created by sylwia on 5/29/21.
 //
 
-#include <unistd.h>
 #include "Piece.h"
 
 /*
  Piece block format:
-  0 1 2 3 4
-0 # # # # #
-1 # # # # #
-2 # # # # #
-3 # # # # #
-4 # # # # #
-
-
     0  1  2  3  4
 
 0   0  1  2  3  4
@@ -24,7 +15,6 @@
 4   20 21 22 23 24
  */
 
-
 Piece::Piece() {
     ;
 }
@@ -32,10 +22,10 @@ Piece::Piece() {
 // every piece consists of 4 squares
 Piece::Piece(int sqr1, int sqr2, int sqr3, int sqr4) {
     // row = sqr/5, col = sqr%5
-    block[sqr1 / BLOCK_SIDE][sqr1 % BLOCK_SIDE] = 1;
-    block[sqr2 / BLOCK_SIDE][sqr2 % BLOCK_SIDE] = 1;
-    block[sqr3 / BLOCK_SIDE][sqr3 % BLOCK_SIDE] = 1;
-    block[sqr4 / BLOCK_SIDE][sqr4 % BLOCK_SIDE] = 1;
+    block[sqr1 / block_side][sqr1 % block_side] = 1;
+    block[sqr2 / block_side][sqr2 % block_side] = 1;
+    block[sqr3 / block_side][sqr3 % block_side] = 1;
+    block[sqr4 / block_side][sqr4 % block_side] = 1;
 }
 
 std::ostream &operator<<(std::ostream &stream, const Piece &piece) {
@@ -62,18 +52,18 @@ int &Piece::operator()(int x, int y) {
 void Piece::draw(GUI* gui, int x, int y) {
 
     // upper left corner of board
-    int start_x = (gui->getWindowWidth() - BOARD_WIDTH) / 2;
-    int start_y = gui->getWindowHeight() - BOARD_HEIGHT - SQUARE_SIDE;
+    int start_x = (gui->getWindowWidth() - board_width) / 2;
+    int start_y = gui->getWindowHeight() - board_height - square_side;
 
     SDL_SetRenderDrawColor(gui->getRenderer(), 212, 174, 51, 0xFF);
 
-    for (int i = 0; i < BLOCK_SIDE; i++){
-        for (int j = 0; j < BLOCK_SIDE; j++){
+    for (int i = 0; i < block_side; i++){
+        for (int j = 0; j < block_side; j++){
 
             if (block[i][j]){
-                gui->draw_square(start_x + ((x + j) * SQUARE_SIDE),
-                                 start_y + ((y + i) * SQUARE_SIDE),
-                                 SQUARE_SIDE);
+                gui->draw_square(start_x + ((x + j) * square_side),
+                                 start_y + ((y + i) * square_side),
+                                 square_side);
             }
         }
     }
@@ -81,16 +71,16 @@ void Piece::draw(GUI* gui, int x, int y) {
 }
 
 void Piece::rotate() {
-    int rotated[BLOCK_SIDE][BLOCK_SIDE] = {0};
+    int rotated[block_side][block_side] = {0};
 
-    for(int i = 0; i < BLOCK_SIDE; i++){
-        for (int j = 0; j < BLOCK_SIDE; j++){
-            rotated[i][j] = block[BLOCK_SIDE - j - 1][i];
+    for(int i = 0; i < block_side; i++){
+        for (int j = 0; j < block_side; j++){
+            rotated[i][j] = block[block_side - j - 1][i];
         }
     }
 
-    for(int i = 0; i < BLOCK_SIDE; i++){
-        for (int j = 0; j < BLOCK_SIDE; j++){
+    for(int i = 0; i < block_side; i++){
+        for (int j = 0; j < block_side; j++){
             block[i][j] = rotated[i][j];
         }
     }

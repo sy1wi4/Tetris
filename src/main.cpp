@@ -9,8 +9,4 @@ int main(){
 
     Game* game = new Game();
     game->start();
-
-    // TODO: draw next piece, highlight next piece,
-    //  initial position of piece, reset game after game over
-
 }
