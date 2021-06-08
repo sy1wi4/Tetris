@@ -38,7 +38,6 @@ Pieces::Pieces() {
     add(p7);
 
     srand(time(NULL));
-
 }
 
 void Pieces::add(Piece piece) {

@@ -9,7 +9,7 @@
 #include <SDL2/SDL.h>
 
 constexpr int win_width = 800;
-constexpr int win_height = 800;
+constexpr int win_height = 700;
 constexpr int gap = 2; // pixels between squares
 
 
