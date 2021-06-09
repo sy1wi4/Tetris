@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 link_directories(${PROJECT_SOURCE_DIR}/lib)
-#include_directories(.)
+include_directories(.)
 
 add_executable(Tetris
         src/main.cpp

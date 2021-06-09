@@ -96,8 +96,9 @@ void Game::start() {
                 board->clear_full_lines(gui, current_y);
 
                 if (board->check_game_over()){
-                    std::cout << "GAME OVER!" << std::endl;
-                    sleep(1);
+                    gui->clear_window();
+                    SDL_RenderPresent(gui->getRenderer());
+                    sleep(2);
                     quit = true;
                 }
 

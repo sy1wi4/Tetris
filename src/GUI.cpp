@@ -59,5 +59,4 @@ int GUI::getWindowHeight() const {
 void GUI::draw_square(int x, int y, int side) {
     SDL_Rect rect{x, y, side - gap, side - gap};
     SDL_RenderFillRect(renderer, &rect);
-
 }
